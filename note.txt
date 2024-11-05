@@ -1,0 +1,13 @@
+    PROCESS:
+TO install virtualenv: pip install virtualenv
+To start env: python -m venv env
+To activate env: env\scripts\activate
+pip install python-decouple gunicorn ........
+django-admin startproject backend .  (make sure you add point at the end . )
+python manage.py startapp app
+To run server : python manage.py runserver 
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+
+# regiter the app under SETTINGS.PY

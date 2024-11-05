@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block link %}
+
+<style>
+    td{
+        border: 1px solid black;
+        padding: 2%;
+        color: blue;
+    }
+</style>
+ {% endblock link %}
+
+
+
+{% block main %}
+
+<p>my order history</p>
+<table>
+    <thead>
+        <td>Name</td>
+        <td>Quantity</td>
+        <td>Amount</td>
+        <td>Date</td>
+    </thead>
+        {% for record in history %}
+    <tbody>
+        <tr>   
+        <td>{{ record.product.name }}</td>
+        <td>{{ record.quantity }}</td>
+        <td>{{ record.Amount }}</td>
+        <td>{{ record.craeted_at }}</td>
+        </tr>
+    </tbody>
+</table>
+
+{% endblock main%}

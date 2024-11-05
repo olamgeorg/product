@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock title %}</title>
+    {% block link %} {% endblock link %}
+    
+    {% block head %}{% endblock head%}
+
+</head>
+<body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home Page</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'create_product' %}">create_product</a></li>
+                    <li><a href="{% url 'history' %}">history</a></li>
+                    <li><a href="{% url 'logout' %}">logout</a></li>
+                    {% else %}
+                    <li><a href="{% url 'signup' %}">signup</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% for message in messages %}
+            {{message}}
+            {% endfor}
+        </header>
+
+    {% block main %}{% endblock main%}
+
+    <footer>
+        <p>This is my Footer</p>
+        <form action="{% url 'subscribe' %}" method="post">
+            <input type="email" name="email" placeholder="subscribe"> <br>
+            <button>subscribe</button>
+
+        </form>
+    </footer>
+</body>
+</html>

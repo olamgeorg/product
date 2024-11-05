@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="">Name</label> <br>
+    <input type="name" name="name" id=""> <br>
+    <label for="">Lastname</label> <br>
+    <input type="text" name="Lastname" id=""> <br>
+    <label for="">Username</label> <br>
+    <input type="text" name="username" id=""> <br>
+    <label for="">Email</label> <br>
+    <input type="email" name="email" id=""> <br>
+    <label for="">Password</label> <br>
+    <input type="password" name="password" id=""> <br>
+    <label for="">ComfirmPassword</label> <br>
+    <input type="password" name="cpassword" id="">  <br>
+    <button>signup</button>
+</form>
+
+<p>Do you have account?.Click <a href="{% url 'login' %}"> here</a>login</p>
+{% endblock main %}

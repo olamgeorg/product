@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %} Home Page {% endblock title %}
+
+{% block head %}
+<style>
+
+</style>
+
+{% endblock head %}
+
+{% block main %}
+
+    <div class="main">  
+        <h1>My Products</h1>
+        <div  class="all_product">
+        {% for Product in my_products %}
+        <div class="product_card ">
+            <div class=" image_wrape">
+                <img src="{{% product.image.url %}}" alt="product image">
+            </div>
+            <p>{{ product.name }}</p>
+            <p>{{ product.quantity }} quantity left</p>
+            <p>{{ product.price }} each</p>
+            <a href="{% url 'edit_product' product.id % }"></a> <button>edit_product</button>
+            <a href="{% url 'delete_product' product.id % }"></a> <button>Delete_product</button>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<div class="Main2">
+    <h2>Markets_Place</h2>
+    <div class="all_product">
+
+        {% for product in Markets_Place %}
+        <div class="product_card">
+            <div class="image_wrape">
+                <img src="{{product.image.url }}" alt="product image">
+            </div>
+            <p>{{ product.name}}</p>
+            <p>{{ product.quantity}}quantity left</p>
+            <p>{{ product.price}} each</p>
+             {% product is_available %}
+                <a href="{% url 'shop_product' product.id %}"><button>buy product</button></a>
+                {% else %}
+                <p>sold out</p>
+                {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock main %}
